@@ -1,0 +1,74 @@
+FUNCTION FIND_VERIFY_ALIGNMENT
+  GLOBAL A_JETX_METHODS
+  BEGIN
+    IF TYPEOF (A_JETX_METHODS) <> 'ARRAY' THEN
+      BEGIN
+; check if file exists in UserAutoLoad/Default
+        ACT_ON_AFS_ERRORS (0, FALSE, AFS_GETBOOTDIR (BOOT))
+        JETXMETHOD_PATH = CONCAT (BOOT, 
+          '/extensions/UserAutoLoad/Default/JetXMethods.rai')
+        IF ACT_ON_AFS_ERRORS (0, FALSE, AFS_GETINFO (JETXMETHOD_PATH, DINFO)) 
+          == 0 THEN
+          BEGIN
+            LOAD JETXMETHOD_PATH
+            FNAME = CONCAT (BOOT, 
+              '/extensions/JetXpertAutoLoad/JetXMethods.rai')
+            SAVE FNAME A_JETX_METHODS
+          END
+      END
+    FOUND = FALSE
+    FOR I = 1 TO DIM1OF (A_JETX_METHODS) DO
+      BEGIN
+        IF TYPEOF (A_JETX_METHODS[I, 1]) == 'STRING' AND A_JETX_METHODS[I, 
+          1] == 'Verify Alignment' THEN
+          BEGIN
+            FOUND = TRUE
+            EXITLOOP
+          END
+      END
+    RETURN (FOUND)
+  END
+
+FUNCTION ADD_VerifyAlignment_METHOD
+  GLOBAL A_JETX_METHODS
+  BEGIN
+    IF NOT FIND_VERIFY_ALIGNMENT THEN
+      BEGIN
+;; first check that A_JEtX_METHODS is valid
+        IF TYPEOF (A_JETX_METHODS[DIM1OF (A_JETX_METHODS), 3]) <> 'STRING' 
+          OR (TYPEOF (A_JETX_METHODS[DIM1OF (A_JETX_METHODS), 3]) == 
+          'STRING' AND A_JETX_METHODS[DIM1OF (A_JETX_METHODS), 3] <> 
+          'not used') THEN
+          BEGIN
+            ARR_REALLOC2 (DIM1OF (A_JETX_METHODS) - 1, DIM2OF (
+              A_JETX_METHODS), '', A_JETX_METHODS)
+          END
+        ARR_REALLOC2 (DIM1OF (A_JETX_METHODS) + 1, DIM2OF (A_JETX_METHODS), 
+          '', A_JETX_METHODS)
+        ARR_ALLOC2 (DIM1OF (A_JETX_METHODS), DIM2OF (A_JETX_METHODS), 
+          A_JETX_METHODS_TEMP)
+        A_JETX_METHODS_TEMP = A_JETX_METHODS
+; VerifyAlignment will be placed just before Customer1 method.
+        FOR II = 1 TO DIM1OF (A_JETX_METHODS) DO
+          IF A_JETX_METHODS[II, 1] == 'Customer1' THEN
+            EXITLOOP
+        IF II > DIM1OF (A_JETX_METHODS) THEN
+          II = DIM1OF (A_JETX_METHODS) - 1
+		 A_JETX_METHODS_TEMP[II, 1] = 'Verify Alignment'
+		 A_JETX_METHODS_TEMP[II, 2] = FALSE
+         A_JETX_METHODS_TEMP[II, 3] = 'VerifyAlign1 SQ.ixsq'
+            
+        IF II <> DIM1OF (A_JETX_METHODS) THEN
+          BEGIN
+            FOR JJ = II TO (DIM1OF (A_JETX_METHODS) - 1) DO
+              A_JETX_METHODS_TEMP[JJ + 1] = A_JETX_METHODS[JJ]
+          END
+        A_JETX_METHODS = A_JETX_METHODS_TEMP
+        ACT_ON_AFS_ERRORS (0, FALSE, AFS_GETBOOTDIR (BOOT))
+        FNAME = CONCAT (BOOT, 
+          '/extensions/JetXpertAutoLoad/JetXMethods.rai')
+        SAVE FNAME A_JETX_METHODS
+      END
+  END
+
+ADD_VerifyAlignment_METHOD

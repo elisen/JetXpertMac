@@ -1,0 +1,127 @@
+;;; this is a patch to use for the 1.00076 pin. One camera
+FUNCTION JETXPERT_CAL
+  GLOBAL ASAP_STATE, ASAP_PTR, ASAP_PICTURE, EVTA_EVENT, ASAP_HEAP, 
+    ASAP_SEQ, A_BUFTOKEN, A_PICSCHED, A_2D_MATRIX,B_2ND1WETTING
+  BEGIN
+; make the calibration sequence active.
+;; EN first check which board is currently active.
+    THIS_CAL_BOARD= F_GET_BOARD (ASAP_STATE[ASAP_PTR, 2])
+
+;;if 0, then it's the 1st jetxpert if 2nd, it's the second JetXpert, if it's not a wetting cam
+	IF TYPEOF (B_2nd1WETTING) <>  'LOGICAL' OR TYPEOF (B_2nD1WETTING)== 'LOGICAL' AND B_2ND1WETTING == FALSE THEN
+	 BEGIN
+		 IF THIS_CAL_BOARD == 0 THEN
+		 CAL_SEQNAME ='JetXpert Cal SQ.ixsq'
+		 ELSE IF THIS_CAL_BOARD == 1 THEN
+		 CAL_SEQNAME = 'JetXpert Cal2 SQ.ixsq' 
+	 END
+    ELSE
+	BEGIN
+;; 2nd camera is wetting so for calibration, just choose the regular JetXpert Cal SQ
+		 CAL_SEQNAME ='JetXpert Cal SQ.ixsq'
+	END
+
+    ADS_H_GET (ASAP_HEAP, ASAP_STATE[ASAP_PTR, 13], A_SEQLIST)
+    FOR WHICH = 1 TO DIM1OF (A_SEQLIST) DO
+      BEGIN
+        IF POS (CAL_SEQNAME, ASAP_SEQ[A_SEQLIST[WHICH], 4]) > 0 THEN
+          EXITLOOP
+      END
+    IF WHICH > DIM1OF (A_SEQLIST) THEN
+      BEGIN
+        JETXPERT_MESSAGE (concat (CAL_SEQNAME, ' not loaded'))
+        SHOW_MENUBAR
+        RETURN
+      END
+    ASAP_SEQ_SELECT_UTIL (A_SEQLIST[WHICH])
+    THIS_PICTURE = ASAP_STATE[ASAP_PTR, 2]
+    THIS_PICEVENT = ASAP_PICTURE[THIS_PICTURE, 1]
+    THIS_PICSCHED = EVTA_EVENT[THIS_PICEVENT, 3]
+    THIS_BUFTOKEN = EVTA_EVENT[THIS_PICEVENT, 4]
+    BUFFER = A_BUFTOKEN[THIS_BUFTOKEN, 1]
+    BUF_GET_BOUNDS (BUFFER, A_BOUNDS)
+    BOARD = A_PICSCHED[THIS_PICSCHED, 10]
+    CH_NO = A_PICSCHED[THIS_PICSCHED, #CAMERANO]
+    SEQ_POI = SEQ_POINTER (CAL_SEQNAME)
+;03/06/09 remember previous cal
+; before resetting calibration. get previous cal
+; Get pointer to calib matrix for this picture
+    P_CAM_2D_MATRIX = ASAP_PIC_CAL_MATRIX (THIS_PICTURE)
+; 9 and 10th element are what we need
+    NUM_PIXELS = A_2D_MATRIX[P_CAM_2D_MATRIX, 9]
+    NUM_UNITS = A_2D_MATRIX[P_CAM_2D_MATRIX, 10]
+; reset calibration
+    TASK_QUICK_CAL_SEQ (1.0, 1, CAL_SEQNAME)
+;; compute threshold for gray2 ROI for mode calculation
+    TH_GRAY2 = COMPUTE_THRESHOLD (CAL_SEQNAME, 'gray2', 0.5)
+    SET_ROI_TH (CAL_SEQNAME, 'gray2', TH_GRAY2)
+    ASAP_RUN_SEQ (SEQ_POI)
+    START_TH = GET_MEAS_VALUE (CAL_SEQNAME, 'Avg_Min_Max')
+    GRAY_MAX = GET_MEAS_VALUE (CAL_SEQNAME, 'TH: Max Gray level')
+    GRAY_MIN = GET_MEAS_VALUE (CAL_SEQNAME, 'TH: Min Gray level')
+    GRAY_MODE = GET_MEAS_VALUE (CAL_SEQNAME, 'gray2: Mode Gray')
+    IF TYPEOF (GRAY_MAX) == 'REAL' AND TYPEOF (GRAY_MIN) == 'REAL' THEN
+      IF (GRAY_MAX - GRAY_MIN) < 20 THEN
+        BEGIN
+          JETXPERT_MESSAGE (
+'Low contrast. Please check calibration target and/or backlight intensity.')
+          JETXPERT_MESSAGE (
+            'Calibration aborted. Previous calibration still in effect.')
+          TASK_QUICK_CAL_SEQ (NUM_UNITS, NUM_PIXELS, CAL_SEQNAME)
+          RETURN
+        END
+    IF TYPEOF (GRAY_MODE) == 'REAL' AND GRAY_MODE > 230 THEN
+      BEGIN
+        JETXPERT_MESSAGE (
+' Pin Image too bright. This will affect accuracy. Please check calibration target and/or backlight intensity.')
+        JETXPERT_MESSAGE (
+          'Calibration aborted. Previous calibration still in effect.')
+        TASK_QUICK_CAL_SEQ (NUM_UNITS, NUM_PIXELS, CAL_SEQNAME)
+        RETURN
+      END
+; get line width
+    LINEWIDTH = GET_MEAS_VALUE (CAL_SEQNAME, 'Pin: Line Width')
+    EDGEPOINTS = GET_MEAS_VALUE (CAL_SEQNAME, 
+      'Pin: # of Edge Points')
+    IF TYPEOF (LINEWIDTH) <> 'REAL' OR TYPEOF (LINEWIDTH) == 'REAL' AND 
+      LINEWIDTH < 0 THEN
+      BEGIN
+        JETXPERT_MESSAGE ('Calibration Failed. No Pin was found.')
+        TASK_QUICK_CAL_SEQ (NUM_UNITS, NUM_PIXELS, CAL_SEQNAME)
+        RETURN
+      END
+    ELSE IF LINEWIDTH < 10.0 OR LINEWIDTH > 2000 THEN
+      BEGIN
+;; change from 500 to 2000
+        JETXPERT_MESSAGE ('Calibration Failed. No Pin was found.')
+        TASK_QUICK_CAL_SEQ (NUM_UNITS, NUM_PIXELS, CAL_SEQNAME)
+        RETURN
+      END
+    ELSE IF EDGEPOINTS < 100 THEN
+      BEGIN
+;; EN change the number of edge points from 200 to 100 for this pin
+        JETXPERT_MESSAGE ('Calibration Failed. No pin was found.')
+        TASK_QUICK_CAL_SEQ (NUM_UNITS, NUM_PIXELS, CAL_SEQNAME)
+        RETURN
+      END
+    ELSE
+      BEGIN
+;; using pin of 1.00076 mm    
+        TASK_QUICK_CAL_SEQ (1.00076, LINEWIDTH, CAL_SEQNAME)
+        ASAP_RUN_SEQ (SEQ_POI)
+        BUF_INFO (0, AA)
+; get new coefficients
+        NUM_PIXELS = A_2D_MATRIX[P_CAM_2D_MATRIX, 9]
+        NUM_UNITS = A_2D_MATRIX[P_CAM_2D_MATRIX, 10]
+        FOV_X = AA[3] * NUM_UNITS
+        FOV_Y = AA[4] * NUM_UNITS
+        SWRITE CALIB_MSG (NUM_PIXELS, NUM_UNITS, FOV_X, FOV_Y) WITH 
+          '%.1f pixel = %.6f mm\nFOV = %.3f mm x %.3f mm'
+; 02/09/10 bring ix to the front before bringing dlog up
+        IX_TO_FRONT
+        JETXPERT_MESSAGE2_OK ('Calibration Done.', CALIB_MSG)
+        ASAP_SAVE_STATE
+      END
+    IF IS_RB_GUI_OPENED THEN
+      MAKE_JETXPERTGUI_FRONTMOST
+  END

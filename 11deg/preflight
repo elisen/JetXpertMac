@@ -1,0 +1,8 @@
+#!/bin/sh
+#$2 is the place where things get installed
+#for debug 
+ix="/Applications/ImageXpert 10.5"
+
+
+#remove JetXpert Cal sequence
+rm -Rf "$pathtoJetX""JetXpert Cal SQ.ixsq"
