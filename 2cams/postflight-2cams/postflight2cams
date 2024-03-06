@@ -1,0 +1,19 @@
+#!/bin/sh
+#$2 is the place where things get installed
+# expect $2 to be "/Applications/ImageXpert®10.1.1"
+#for debug 
+#ix="/Applications/ImageXpert®10.1.1"
+ix="/Applications/ImageXpert 10.5"
+
+
+
+STRING_DEST="$ix""/JOBS/JetXpert/"
+rm -rf $STRING_DEST"Ligament SQ.ixsq"
+rm -rf $STRING_DEST"dropflight SQ.ixsq"
+rm -rf $STRING_DEST"Default Drops SQ.ixsq"
+rm -rf $STRING_DEST"AutoDrops_pL SQ.ixsq"
+rm -rf $STRING_DEST"JetXpert Cal SQ.ixsq"
+rm -rf $STRING_DEST"Satellites SQ.ixsq"
+
+
+
