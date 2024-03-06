@@ -1,0 +1,278 @@
+<project>
+    <shortName>JetXStitch</shortName>
+    <fullName>JetXStitch 10.5</fullName>
+    <version>4.6f</version>
+    <installerFilename>5-${product_shortname}-10.5-${product_version}-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    <componentList>
+        <component>
+            <name>Beginning</name>
+            <description>Beginning</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>scripts</description>
+                    <destination>/Users/Shared/scripts</destination>
+                    <name>scripts</name>
+                    <platforms>osx</platforms>
+                    <actionList>
+                        <runProgram>
+                            <program>/Users/Shared/scripts/preflight_stitch</program>
+                            <programArguments></programArguments>
+                            <runAs>${system_username}</runAs>
+                        </runProgram>
+                    </actionList>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/scripts/preflight_stitch</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>Common</name>
+            <description>Common</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>extensions</description>
+                    <destination>${installdir}/extensions</destination>
+                    <name>extensions</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Stitch/extensions/FreqGenerateAutoLoad</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Stitch/extensions/JetXpertAutoLoad</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Stitch/extensions/UserAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>JetXpert</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JetXpert</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/JOBS/JetXpert/Stitch SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>StitchFromFolder</description>
+                    <destination>${installdir}/JOBS/Stitch From Folder</destination>
+                    <name>StitchFromFolder</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/JOBS/Stitch from Folder/Stitch Task.ixtask</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>StitchJetXpert</name>
+            <description>Add Stitch to JetXpert</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JetXpert</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JetXpert</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/JOBS/JetXpert/StitchingResult SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>StitchJetXWet</name>
+            <description>Add Stitch to JetXpert + Wetting</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JetXpert</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JetXpert</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/StitchingResult SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>StitchJetXWettingNozzle</name>
+            <description>Add Stitch to JetXpert+Wetting+NozzleXaminer</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JetXpert</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JetXpert</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/wnozzlecam/StitchingResult SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>StitchJetXWettingNozzlePrint</name>
+            <description>Add Stitch to JetXpert+Wetting+NozzleXaminer+PrintXaminer</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JetXpert</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JetXpert</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/Stitch/4cameras/StitchingResult SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <createUninstaller>0</createUninstaller>
+    <defaultUnixGroup>staff</defaultUnixGroup>
+    <defaultUnixOwner>${system_username}</defaultUnixOwner>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>Stitch123</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, LLC (G26RHX8L8Z)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <vendor>ImageXpert inc.</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert 10.5</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>no</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>no</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+        <choiceParameter>
+            <name>preferred_env</name>
+            <title>Choose Stitch configuration</title>
+            <description></description>
+            <explanation>Choose the Stitch installation based on your current configuration </explanation>
+            <value></value>
+            <default>jetx</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <displayType>radiobuttons</displayType>
+            <insertAfter>installdir</insertAfter>
+            <ordering>default</ordering>
+            <width>30</width>
+            <optionList>
+                <option>
+                    <description>Installs Stitch on a JetXpert system</description>
+                    <image></image>
+                    <text>(Configuration: 1 camera)</text>
+                    <value>jetx</value>
+                </option>
+                <option>
+                    <description>Installs Stitch on a JetXpert system with wetting or on JetXpert 3D.</description>
+                    <image></image>
+                    <text>(Configuration: 2 cameras)</text>
+                    <value>jetxwet</value>
+                </option>
+                <option>
+                    <description>Installs Stitch on a JetXpert system with wetting and NozzleXaminer.</description>
+                    <image></image>
+                    <text>(Configuration: 3 cameras)</text>
+                    <value>jetxwetNozzle</value>
+                </option>
+                <option>
+                    <description>Installs Stitch on a JetXpert system with wetting, NozzleXaminer and PrintXaminer.</description>
+                    <image></image>
+                    <text>(Configuration: 4 cameras)</text>
+                    <value>jetxwetNozzlePrint</value>
+                </option>
+            </optionList>
+            <postShowPageActionList>
+                <componentSelection>
+                    <deselect>StitchJetXWet, StitchJetXWettingNozzle,StitchJetXWettingNozzlePrint</deselect>
+                    <select>StitchJetXpert</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>jetx</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+                <componentSelection>
+                    <deselect>StitchJetXpert,StitchJetXWettingNozzle,StitchJetXWettingNozzlePrint</deselect>
+                    <select>StitchJetXWet</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>jetxwet</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+                <componentSelection>
+                    <deselect>StitchJetXpert,StitchJetXWet,StitchJetXWettingNozzlePrint</deselect>
+                    <select>StitchJetXWettingNozzle</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>jetxwetNozzle</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+                <componentSelection>
+                    <deselect>StitchJetXpert,StitchJetXWet,StitchJetXWettingNozzle</deselect>
+                    <select>StitchJetXWettingNozzlePrint</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>jetxwetNozzlePrint</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+            </postShowPageActionList>
+        </choiceParameter>
+    </parameterList>
+</project>
+

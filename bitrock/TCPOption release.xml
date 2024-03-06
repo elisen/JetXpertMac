@@ -1,0 +1,103 @@
+<project>
+    <shortName>TCPOption</shortName>
+    <fullName>TCPOption</fullName>
+    <version>1.20c</version>
+    <installerFilename>9-${product_shortname}-${product_version}-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <readmeFile>/Users/elise/jetXpertMac/TCPOption/README-TCP1.20.txt</readmeFile>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    <componentList>
+        <component>
+            <name>TCPOption</name>
+            <description>TCPOption</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>TCPAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>TCPAutoLoad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/TCPOption/TCPAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>PatchAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>PatchAutoLoad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/TCPOption/PatchAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>UserAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>UserAutoLoad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/TCPOption/UserAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>JetXpert Manuals</description>
+                    <destination>${installdir}</destination>
+                    <name>JetXpertManuals</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/TCPOption/JetXpert Manuals</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>TCP_ABORT</description>
+                    <destination>${installdir}</destination>
+                    <name>TCP_ABORT</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/TCPOption/TCP_ABORT</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <createUninstaller>0</createUninstaller>
+    <defaultUnixGroup>staff</defaultUnixGroup>
+    <defaultUnixOwner>${system_username}</defaultUnixOwner>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>TCPX</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, LLC (G26RHX8L8Z)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <vendor>ImageXpert inc.</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert 10.5</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>0</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>1</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+    </parameterList>
+</project>
+

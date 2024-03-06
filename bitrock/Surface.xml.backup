@@ -1,0 +1,91 @@
+<project>
+    <shortName>Surface</shortName>
+    <fullName>Surface</fullName>
+    <version>2.0b</version>
+    <installerFilename>${product_shortname}-${product_version}-10.5-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    <componentList>
+        <component>
+            <name>Surface</name>
+            <description>Surface</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JOBS</description>
+                    <destination>${installdir}/JOBS/</destination>
+                    <name>JOBS</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Files_for_surface/JOBS/JetXSurface</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>JetXpertAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>JetXpertAutoLoad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Files_for_surface/extensions/JetXpertAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>PatchAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>PatchAutoLoad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Files_for_surface/extensions/PatchAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>UserAutoLOad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>UserAutoLOad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/Files_for_surface/extensions/UserAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <createUninstaller>0</createUninstaller>
+    <defaultUnixGroup>staff</defaultUnixGroup>
+    <defaultUnixOwner>${system_username}</defaultUnixOwner>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>SurfaceX</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, LLC (G26RHX8L8Z)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <vendor>ImageXpert inc.</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert 10.5</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>0</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>1</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+    </parameterList>
+</project>
+

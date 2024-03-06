@@ -1,0 +1,273 @@
+<project>
+    <shortName>JetXMotion</shortName>
+    <fullName>JetXMotion_10.5</fullName>
+    <version>5.1</version>
+    <installerFilename>2-${product_shortname}-10.5-${product_version}-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    <componentList>
+        <component>
+            <name>default</name>
+            <description>Default Component</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfiles</name>
+                    <platforms>all</platforms>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runAsAdmin>0</runAsAdmin>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfileslinux</name>
+                    <platforms>linux</platforms>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfileswindows</name>
+                    <platforms>windows</platforms>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfilesosx</name>
+                    <platforms>osx</platforms>
+                </folder>
+            </folderList>
+            <startMenuShortcutList>
+                <startMenuShortcut>
+                    <comment>Uninstall ${product_fullname}</comment>
+                    <name>Uninstall ${product_fullname}</name>
+                    <runAsAdmin>0</runAsAdmin>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon></windowsIcon>
+                    <windowsPath>${installdir}/</windowsPath>
+                </startMenuShortcut>
+            </startMenuShortcutList>
+        </component>
+        <component>
+            <name>Beginning</name>
+            <description>Beginning</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>Shared</description>
+                    <destination>/Users/Shared/scripts</destination>
+                    <name>Shared</name>
+                    <platforms>osx</platforms>
+                    <actionList>
+                        <runProgram>
+                            <program>/Users/Shared/scripts/preflight_motion</program>
+                            <programArguments></programArguments>
+                            <runAs>${system_username}</runAs>
+                        </runProgram>
+                    </actionList>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/scriptmotion/postflight_motion</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/scriptmotion/preflight_motion</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+            <postInstallationActionList>
+                <runProgram>
+                    <program>/Users/Shared/scripts/postflight_motion</program>
+                    <programArguments></programArguments>
+                    <runAs>${system_username}</runAs>
+                </runProgram>
+            </postInstallationActionList>
+        </component>
+        <component>
+            <name>MotionCore</name>
+            <description>MotionCore</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>extensions</description>
+                    <destination>${installdir}/extensions</destination>
+                    <name>extensions</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/extensions/LinEngAutoLoad</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/extensions/UserAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>JOBS</description>
+                    <destination>${installdir}/JOBS</destination>
+                    <name>JOBS</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/JOBS/MissingJets</origin>
+                        </distributionDirectory>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/JOBS/JetXMotion</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>1axis_motion</name>
+            <description></description>
+            <canBeEdited>1</canBeEdited>
+            <detailedDescription>Install motion configuration and motion data for 1 axis motion.</detailedDescription>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>1 axis motion config</description>
+                    <destination>${installdir}/Default.Appp</destination>
+                    <name>Config2axis</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/Default.Appp/Mot_Config.ixmcfg</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/Default.Appp/Motion_Data.ixmotn</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>2axis_motion</name>
+            <description></description>
+            <canBeEdited>1</canBeEdited>
+            <detailedDescription>Install motion configuration and motion data for 2 axis motion.</detailedDescription>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>motion config</description>
+                    <destination>${installdir}/Default.Appp</destination>
+                    <name>Config2axis</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/Default.Appp-2 axis/Mot_Config.ixmcfg</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/JetXMotion/Default.Appp-2 axis/Motion_Data.ixmotn</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <createUninstaller>0</createUninstaller>
+    <defaultUnixGroup>staff</defaultUnixGroup>
+    <defaultUnixOwner>${system_username}</defaultUnixOwner>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>JetXMotion123</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, LLC (G26RHX8L8Z)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <uninstallerDirectory>${installdir}/</uninstallerDirectory>
+    <vendor>ImageXpert inc</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert 10.5</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>no</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+        <choiceParameter>
+            <name>preferred_env</name>
+            <title>Choose JetXpert Motion configuration</title>
+            <description></description>
+            <explanation>Choose JetXpert Motion configuration </explanation>
+            <value></value>
+            <default>1axis_motion</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <displayType>radiobuttons</displayType>
+            <insertAfter>installdir</insertAfter>
+            <ordering>default</ordering>
+            <width>30</width>
+            <optionList>
+                <option>
+                    <description></description>
+                    <image></image>
+                    <text>1 axis</text>
+                    <value>1axis_motion</value>
+                </option>
+                <option>
+                    <description></description>
+                    <image></image>
+                    <text>2 axis</text>
+                    <value>2axis_motion</value>
+                </option>
+            </optionList>
+            <postShowPageActionList>
+                <componentSelection>
+                    <deselect>2axis_motion</deselect>
+                    <select>1axis_motion</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>1axis_motion</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+                <componentSelection>
+                    <deselect>1axis_motion</deselect>
+                    <select>2axis_motion</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>2axis_motion</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+            </postShowPageActionList>
+        </choiceParameter>
+    </parameterList>
+</project>
+

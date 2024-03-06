@@ -1,0 +1,106 @@
+<project>
+    <shortName>DropTracking</shortName>
+    <fullName>DropTracking</fullName>
+    <version>1.6D</version>
+    <installerFilename>${product_shortname}-${product_version}-10.5-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    <componentList>
+        <component>
+            <name>Beginning</name>
+            <description>Beginning</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>Shared</description>
+                    <destination>/Users/Shared/scripts</destination>
+                    <name>Shared</name>
+                    <platforms>osx</platforms>
+                    <actionList>
+                        <runProgram>
+                            <program>/Users/Shared/scripts/preflight_droptracking</program>
+                            <programArguments></programArguments>
+                            <runAs>${system_username}</runAs>
+                        </runProgram>
+                    </actionList>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/DropTracking/scripts/preflight_droptracking</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/DropTracking/scripts/postflight_droptracking</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+            <postInstallationActionList>
+                <runProgram>
+                    <program>/Users/Shared/scripts/postflight_droptracking</program>
+                    <programArguments></programArguments>
+                    <runAs>${system_username}</runAs>
+                </runProgram>
+            </postInstallationActionList>
+        </component>
+        <component>
+            <name>DropTracking</name>
+            <description>DropTracking</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JOBS</description>
+                    <destination>${installdir}/JOBS/</destination>
+                    <name>JOBS</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/DropTracking/JOBS/Drop Tracking</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>FreqGenerateAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>FreqGenerateAutoLoad</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/DropTracking/extensions/FreqGenerateAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <createUninstaller>0</createUninstaller>
+    <defaultUnixGroup>staff</defaultUnixGroup>
+    <defaultUnixOwner>${system_username}</defaultUnixOwner>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>DropTrack</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, LLC (G26RHX8L8Z)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <vendor>ImageXpert inc.</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert 10.5</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>0</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>1</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+    </parameterList>
+</project>
+

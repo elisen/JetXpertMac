@@ -1,0 +1,93 @@
+<project>
+    <shortName>PrintControl</shortName>
+    <fullName> PrintControl-Automation</fullName>
+    <version>1.0</version>
+    <installerFilename>${product_shortname}-${product_version}-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    
+    <componentList>
+        <component>
+            <name>GIS</name>
+            <description>GIS Automatic</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>PrintCtrlAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>PrintCtrl</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/PrintCtrl2/gis/PrintCtrlAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>Meteor</name>
+            <description>Meteor Automatic</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>PrintCtrlAutoLoad</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>PrintCtrlAutoLoad2</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/PrintCtrl2/ttp/PrintCtrlAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <postInstallationActionList>
+        <changeOSXAttributes>
+            <!-- Restore metadata for File Type and File Creator. -->
+
+            <creator>RAIL</creator>
+
+            <!-- The file specifications come in part from the git script "post-checkout" -->
+
+            <files>${installdir}/extensions/PrintCtrlAutoLoad/*</files>
+            <progressText>Changing OSX attributes</progressText>
+            <type>TEXT</type>
+        </changeOSXAttributes>
+    </postInstallationActionList>
+    <allowComponentSelection>1</allowComponentSelection>
+    <createUninstaller>0</createUninstaller>
+    <defaultUnixGroup>staff</defaultUnixGroup>
+    <defaultUnixOwner>${system_username}</defaultUnixOwner>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>PControlIP</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, Inc. (L4HA83SRMM)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <vendor>ImageXpert inc.</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert®10.1.2</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>no</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+    </parameterList>
+</project>
+

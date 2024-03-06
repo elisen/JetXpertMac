@@ -1,0 +1,19 @@
+#!/bin/sh
+#$2 is the place where things get installed
+# expect $2 to be "/Applications/ImageXpert®10.1.1"
+#for debug 
+ix="/Applications/ImageXpert 10.5"
+#check if JetXpert single cameras exists. If they do delete them
+JetXpertJOB="$ix""/JOBS/JetXpert/"
+SEQNAME[0]="$JetXpertJOB""Default Drops SQ.ixsq"
+SEQNAME[1]="$JetXpertJOB""Ligament SQ.ixsq"
+SEQNAME[2]="$JetXpertJOB""Satellites SQ.ixsq"
+SEQNAME[3]="$JetXpertJOB""dropflight SQ.ixsq"
+SEQNAME[4]="$JetXpertJOB""twodrops SQ.ixsq"
+SEQNAME[5]="$JetXpertJOB""AutoDrops SQ.ixsq"
+
+ rm -rf "${SEQNAME[@]}"
+#
+
+
+

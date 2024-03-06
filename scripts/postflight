@@ -1,0 +1,81 @@
+#!/bin/sh
+#$2 is the place where things get installed
+# expect $2 to be "/Applications/ImageXpert®10.1.1"
+#for debug 
+ix="/Applications/ImageXpert 10.5"
+echo $ix
+STRING_DEST=$ix"/extensions/"
+#mv the MacRail.icns inside the the MacRail.app
+STRING_icns="$ix""/MacRail.icns"
+if [ -e "$STRING_icns" ]
+then
+macrail="$ix""/MacRail.app"
+if [ -e "$macrail" ]
+then
+mv "$STRING_icns" "$ix""/MacRail.app/Contents/Resources/MacRail.icns"
+fi
+fi
+
+
+#here this is weird. you need to create a folder inside the MacRail.app to update the icon
+#then you can remove it
+mkdir "$ix""/MacRail.app/untitled"
+rm -rf "$ix""/MacRail.app/untitled"
+
+
+#check if the flip_FW_cam.rai exists.if it does, delete it
+flip=$STRING_DEST"UserAutoLoad/flip_FW_cam.rai"
+
+if [ -e "$flip" ]
+then
+rm -f $flip
+fi
+
+#check if custom camera setup exists. if it does, delete it
+camsetup=$STRING_DEST"UserAutoLoad/custom_camera_setup"
+
+if [ -e "$camsetup" ]
+then
+rm -f $camsetup
+fi
+
+#
+#check if JOB1 exists. if it does, delete it
+JOB1="$ix""/JOBS/JOB 1/"
+if [ -d "$JOB1" ]
+then
+rm -rf "$JOB1"
+fi
+#check if VerificationExample exists. if it does, delete it
+Verif="$ix""/JOBS/VerificationExample/"
+if [ -d "$Verif" ]
+then
+rm -rf "$Verif"
+fi
+
+#
+
+
+STRING_DEST=$ix"/extensions/PatchAutoLoad/"
+file2=$STRING_DEST"netpackage.rai"
+if [ -e "$file2" ]
+then
+rm -f $file2
+fi
+file3=$STRING_DEST"NetPackageFolder/"
+if [ -e "$file3" ]
+then
+rm -rf $file3
+fi
+
+JETX_PORT=$ix"/extensions/UserAutoLoad/jetxpert_port_name.rai"
+JETX_PORT_ORIG=$ix"/extensions/UserAutoLoad/jetxpert_port_name_orig.rai"
+
+if [ -e "$JETX_PORT_ORIG" ]
+then
+mv "$JETX_PORT_ORIG" "$JETX_PORT"
+fi
+
+
+
+

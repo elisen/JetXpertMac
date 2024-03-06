@@ -1,0 +1,175 @@
+<project>
+    <shortName>JetXNozzleX</shortName>
+    <fullName> NozzleXaminer_10.5 v3b</fullName>
+    <version>3.3b</version>
+    <installerFilename>${product_shortname}-10.5-${product_version}-installer.${platform_exec_suffix}</installerFilename>
+    <askForConfirmationOnUninstall>0</askForConfirmationOnUninstall>
+    <licenseFile>/Users/elise/jetXpertMac/Software License.txt</licenseFile>
+    <splashImage>/Users/elise/jetXpertMac/JX_Color_BR.png</splashImage>
+    <componentList>
+        <component>
+            <name>Beginning</name>
+            <description>Beginning</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>0</show>
+            <folderList>
+                <folder>
+                    <description>Shared</description>
+                    <destination>/Users/Shared/scripts</destination>
+                    <name>Shared</name>
+                    <platforms>osx</platforms>
+                    <actionList>
+                        <runProgram>
+                            <program>/Users/Shared/scripts/preflight_nx</program>
+                            <programArguments></programArguments>
+                        </runProgram>
+                    </actionList>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/NozzleXaminer/script/preflight_nx</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>JetXOnly</name>
+            <description>Add NozzleXaminer to JetXpert</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>JOBS</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JOBS</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/NozzleXaminer/1cam/JetXpert/NozzleCam Live SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>extensions</description>
+                    <destination>${installdir}/extensions/</destination>
+                    <name>extensions</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/NozzleXaminer/1cam/JetXpertAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+        <component>
+            <name>JetXWetting</name>
+            <description>Add NozzleXaminer to JetXpert and Wetting</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>0</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>extensions</description>
+                    <destination>${installdir}/extensions</destination>
+                    <name>extensions</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>/Users/elise/jetXpertMac/NozzleXaminer/2cam/JetXpertAutoLoad</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>JOBS</description>
+                    <destination>${installdir}/JOBS/JetXpert</destination>
+                    <name>JOBS</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>/Users/elise/jetXpertMac/NozzleXaminer/2cam/JetXpert/NozzleCam Live SQ.ixsq</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+    <createUninstaller>0</createUninstaller>
+    <enableEncryption>1</enableEncryption>
+    <enableRollback>0</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <encryptionPassword>NozzleX123</encryptionPassword>
+    <osxPlatforms>osx-intel osx-x86_64</osxPlatforms>
+    <osxSigningIdentity>Developer ID Application: ImageXpert, Inc. (L4HA83SRMM)</osxSigningIdentity>
+    <requireInstallationByRootUser>1</requireInstallationByRootUser>
+    <vendor>ImageXpert inc.</vendor>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value></value>
+            <default>/Applications/ImageXpert 10.5</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>no</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+        <choiceParameter>
+            <name>preferred_env</name>
+            <title>Choose NozzleXaminer configuration</title>
+            <description></description>
+            <explanation>Choose the NozzleXaminer installation based on your current configuration </explanation>
+            <value></value>
+            <default>jetxwet</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <displayType>radiobuttons</displayType>
+            <insertAfter>installdir</insertAfter>
+            <ordering>default</ordering>
+            <width>30</width>
+            <optionList>
+                <option>
+                    <description>Installs NozzleXaminer on a JetXpert system</description>
+                    <image></image>
+                    <text>Add to JetXpert (total 2 cameras)</text>
+                    <value>jetx</value>
+                </option>
+                <option>
+                    <description>Installs NozzleXaminer on a JetXpert system with wetting or on JetXpert 3D.</description>
+                    <image></image>
+                    <text>Add to JetXpert with wetting or JetXpert 3D (total 3 cameras)</text>
+                    <value>jetxwet</value>
+                </option>
+            </optionList>
+            <postShowPageActionList>
+                <componentSelection>
+                    <deselect>JetXWetting</deselect>
+                    <select>JetXOnly</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>jetx</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+                <componentSelection>
+                    <deselect>JetXOnly</deselect>
+                    <select>JetXWetting</select>
+                    <ruleList>
+                        <compareValues>
+                            <logic>equals</logic>
+                            <value1>${preferred_env}</value1>
+                            <value2>jetxwet</value2>
+                        </compareValues>
+                    </ruleList>
+                </componentSelection>
+            </postShowPageActionList>
+        </choiceParameter>
+    </parameterList>
+</project>
+

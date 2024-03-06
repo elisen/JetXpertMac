@@ -1,0 +1,37 @@
+#!/bin/sh
+#$2 is the place where things get installed
+#for debug 
+ix="/Applications/ImageXpert 10.5"
+
+# remove jetx_tasks.rai if present.
+STRING_EXT_TASK="$ix""/extensions/UserAutoLoad/jetx_tasks.rai"
+if [ -e "$STRING_EXT_TASK" ]
+then
+rm  "$STRING_EXT_TASK"
+fi
+
+
+#remove JetXpert Sequences
+JetX="/JOBS/JetXpert/"
+pathtoJetX="$ix""$JetX"
+rm -Rf "$pathtoJetX"Customer*.ixsq
+rm -Rf "$pathtoJetX""Default Drops"*.ixsq
+rm -Rf "$pathtoJetX"Ligament*.ixsq
+rm -Rf "$pathtoJetX"Satellites*.ixsq
+rm -Rf "$pathtoJetX"twodrops*.ixsq
+rm -Rf "$pathtoJetX""JetXpert Cal"*.ixsq
+#remove asap_system.dat
+#asapsystem=$ix"/asap/asap_system.dat"
+#if [ -e "$asapsystem" ]
+#then
+#rm  "$asapsystem"
+#fi
+
+
+#check if jetxpert_port_name.rai is present already. If BK_port present, do not overwrite  by renaming.
+JETX_PORT=$ix"/extensions/UserAutoLoad/jetxpert_port_name.rai"
+JETX_PORT_ORIG=$ix"/extensions/UserAutoLoad/jetxpert_port_name_orig.rai"
+if [ -e "$JETX_PORT" ]
+then
+mv "$JETX_PORT" "$JETX_PORT_ORIG"
+fi
